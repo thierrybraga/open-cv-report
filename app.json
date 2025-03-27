@@ -1,0 +1,50 @@
+{
+    "name": "Flask App on Heroku",
+    "description": "A Flask application deployed on Heroku.",
+    "repository": "https://github.com/root-sec4all/sec4all",
+    "website": "https://sec4all.co",
+    "keywords": ["python", "flask"],
+    "env": {
+      "FLASK_ENV": {
+        "description": "Flask environment mode (development/production)",
+        "value": "production"
+      },
+      "SECRET_KEY": {
+        "description": "Secret key for Flask application.",
+        "generator": "secret"
+      },
+      "DATABASE_URL": {
+        "description": "Database connection URL",
+        "required": true
+      }
+    },
+    "addons": [
+      {
+        "plan": "heroku-postgresql",
+        "options": {
+          "version": "13"
+        }
+      }
+    ],
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ],
+    "scripts": {
+      "postdeploy": "flask db upgrade"
+    },
+    "formation": {
+      "web": {
+        "quantity": 1,
+        "size": "standard-1x"
+      }
+    },
+    "environments": {
+      "test": {
+        "scripts": {
+          "test": "pytest"
+        }
+      }
+    }
+  }  

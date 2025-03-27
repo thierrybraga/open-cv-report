@@ -1,0 +1,390 @@
+/* ==========================================================================
+   CONFIGURATION VARIABLES & GLOBAL SETTINGS
+   ========================================================================== */
+   :root {
+    /* Color Palette */
+    --primary-color: #2d6a4f;            /* Dark, sophisticated green */
+    --primary-hover: #2C3E50;            /* Intense hover for primary */
+    --success-color: #4caf50;            /* Vibrant success green */
+    --success-hover: #218838;            /* Intense hover for success */
+    --secondary-color: #495057;          /* Refined dark gray */
+    --secondary-hover: #78909C;          /* Slightly darker on hover */
+    --navbar-bg: #2D3339;                /* Elegant dark navbar */
+    --navbar-text: #ffffff;              /* White text for contrast */
+    --body-bg: #EDEFF1;                  /* Soft main background */
+    --light-bg: rgba(255, 255, 255, 0.95); /* Light, slightly transparent background */
+    --shadow-color: rgba(0, 0, 0, 0.12);  /* Soft shadow */
+    --input-focus-shadow: rgba(45, 106, 79, 0.4); /* Soft green focus shadow */
+    --text-color: #212529;               /* Dark gray, nearly black text */
+    
+    /* Typography & Transitions */
+    --font-base: 14px;
+    --font-small: 0.875rem;
+    --font-medium: 1rem;
+    --font-large: 1.125rem;
+    --transition-duration: 0.3s;
+    --hover-scale: 1.05;
+  }
+  
+  /* Reset & Global Styles */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-bg);
+    font-family: 'Roboto', Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ==========================================================================
+     NAVBAR & NAVIGATION
+     ========================================================================== */
+  .navbar {
+    background: var(--navbar-bg);
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 5px var(--shadow-color);
+  }
+  
+  .navbar-brand {
+    color: var(--navbar-text);
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .nav-link {
+    color: var(--navbar-text);
+    margin-left: 1rem;
+    padding: 0.5rem 0;
+    font-size: var(--font-medium);
+    transition: color var(--transition-duration), text-decoration var(--transition-duration);
+  }
+  
+  .nav-link:hover,
+  .nav-link:focus {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    background: transparent;
+    color: var(--navbar-text);
+    font-size: 1.5rem;
+  }
+  
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all var(--transition-duration);
+  }
+  
+  /* ==========================================================================
+     MAIN CONTENT & CONTAINERS
+     ========================================================================== */
+  .main-content {
+    flex: 1;
+    padding-bottom: 3rem;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: box-shadow var(--transition-duration);
+  }
+  
+  .main-content:hover {
+    box-shadow: 0 8px 16px var(--shadow-color);
+  }
+  
+  .container {
+    margin-top: 2rem;
+  }
+  
+  /* ==========================================================================
+     BUTTONS & LINKS
+     ========================================================================== */
+  button, .btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    font-size: var(--font-medium);
+    cursor: pointer;
+    transition: background-color var(--transition-duration), transform var(--transition-duration);
+  }
+  
+  button:hover, .btn:hover,
+  button:focus, .btn:focus {
+    background-color: var(--primary-hover);
+    transform: scale(var(--hover-scale));
+    outline: none;
+  }
+  
+  button:focus, .btn:focus {
+    box-shadow: 0 0 0 2px var(--success-color);
+  }
+  
+  /* Compact Button Overrides */
+  .btn {
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+    background-clip: padding-box;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary {
+    background-color: rgba(45, 106, 79, 0.75);
+    border: 1px solid rgba(45, 106, 79, 0.5);
+  }
+  
+  .btn-primary:hover, .btn-primary:focus {
+    background-color: rgba(45, 106, 79, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-success {
+    background-color: rgba(40, 167, 69, 0.75);
+    border: 1px solid rgba(40, 167, 69, 0.5);
+  }
+  
+  .btn-success:hover, .btn-success:focus {
+    background-color: rgba(40, 167, 69, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-secondary {
+    background-color: rgba(108, 117, 125, 0.75);
+    border: 1px solid rgba(108, 117, 125, 0.5);
+  }
+  
+  .btn-secondary:hover, .btn-secondary:focus {
+    background-color: rgba(108, 117, 125, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ==========================================================================
+     TABLE & DATA DISPLAY
+     ========================================================================== */
+  .table {
+    width: 100%;
+    background-color: var(--light-bg);
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .table th,
+  .table td {
+    padding: 1rem;
+    font-size: var(--font-medium);
+    text-align: left;
+    vertical-align: middle;
+    min-width: 150px;
+    max-width: 350px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
+  
+  .table th {
+    background-color: rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    padding: 1.2rem;
+  }
+  
+  .table td {
+    background-color: #fff;
+  }
+  
+  /* ==========================================================================
+     COLUNA "DESCRIPTION" - AUMENTAR ESPAÇAMENTO (2ª coluna)
+     ========================================================================== */
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    width: 400px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: left;
+  }
+  
+  /* ==========================================================================
+     SEVERITY STYLES
+     ========================================================================== */
+  .table td.severity-low,
+  .table td.severity-medium,
+  .table td.severity-high {
+    font-weight: bold;
+  }
+  
+  .table td.severity-low {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #256029;
+    border-left: 6px solid #d4f12c;
+  }
+  
+  .table td.severity-medium {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: #856404;
+    border-left: 6px solid #ffc107;
+  }
+  
+  .table td.severity-high {
+    background-color: rgba(244, 67, 54, 0.15);
+    color: #721c24;
+    border-left: 6px solid #f44336;
+  }
+  
+  /* ==========================================================================
+     ROW HOVER & FOCUS ENHANCEMENTS
+     ========================================================================== */
+  .table tr:hover,
+  .table tr:focus {
+    background-color: rgba(240, 240, 240, 0.8);
+    transform: scale(1.01);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table tr:focus {
+    outline: 3px solid var(--primary-color);
+    background-color: rgba(240, 240, 240, 0.9);
+  }
+  
+  /* ==========================================================================
+     COLUMN WIDTH OPTIMIZATIONS
+     ========================================================================== */
+  .table th:nth-child(3),
+  .table td:nth-child(3) {
+    width: 50px;
+    text-align: center;
+  }
+  
+  .table th:nth-child(4),
+  .table td:nth-child(4) {
+    width: 40px;
+    text-align: center;
+  }
+  
+  .table th:nth-child(5),
+  .table td:nth-child(5) {
+    width: 50px;
+    text-align: center;
+  }
+  
+  .table th:nth-child(6),
+  .table td:nth-child(6) {
+    width: 20px;
+    text-align: center;
+  }
+  
+  /* ==========================================================================
+     FILTERS
+     ========================================================================== */
+  .filter-container {
+    background-color: var(--light-bg);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-container .form-select,
+  .filter-container .form-control {
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-size: var(--font-medium);
+    background-color: rgba(0, 0, 0, 0.03);
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .filter-container .form-select:focus,
+  .filter-container .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+  
+  /* ==========================================================================
+     SPINNER
+     ========================================================================== */
+  .spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top: 6px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* ==========================================================================
+     PAGINATION
+     ========================================================================== */
+  .pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding-left: 0;
+    margin-top: 2rem;
+  }
+  
+  .page-item {
+    margin: 0 5px;
+  }
+  
+  .page-link {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    color: var(--primary-color);
+    background-color: var(--light-bg);
+    text-align: center;
+    transition: background-color var(--transition-duration), color var(--transition-duration), transform var(--transition-duration);
+    font-size: var(--font-small);
+  }
+  
+  .page-link:hover,
+  .page-link:focus {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: scale(var(--hover-scale));
+  }
+  
+  .page-item.active .page-link {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+  }
+  
+  .page-item.disabled .page-link {
+    color: #9b9b9b;
+    cursor: not-allowed;
+  }
+  
+  .page-item:first-child .page-link,
+  .page-item:last-child .page-link {
+    border-radius: 30px;
+  }
+  

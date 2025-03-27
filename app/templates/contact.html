@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Minha Empresa</title>
+  <!-- Link para seu arquivo de estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">Minha Empresa</div>
+    <ul class="navbar-nav" style="display: flex; list-style: none; margin: 0; padding: 0;">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link active" href="contact.html">Contato</a></li>
+      <!-- Adicione outros links se necessário -->
+    </ul>
+  </nav>
+
+  <!-- Conteúdo Principal -->
+  <div class="container" style="display: flex; justify-content: center; align-items: center; min-height: calc(100vh - 150px);">
+    <div class="card" style="background-color: var(--light-bg); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px var(--shadow-color); width: 100%; max-width: 500px;">
+      <h2 style="text-align: center; margin-bottom: 1.5rem;">Fale Conosco</h2>
+      <form action="envia_contato.php" method="POST">
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" class="form-control" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="seuemail@exemplo.com" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="(00) 00000-0000" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" class="form-control" rows="4" placeholder="Sua mensagem" required></textarea>
+        </div>
+        <div style="text-align: center;">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" style="background-color: var(--navbar-bg); color: var(--navbar-text); text-align: center; padding: 1rem;">
+    <p>© 2025 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Inclusão de scripts, se necessário -->
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

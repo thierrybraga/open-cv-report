@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YRT8MN2FY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8YRT8MN2FY');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4080167727413874"
+     crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reports on CVEs (Common Vulnerabilities and Exposures) with custom filters for vendors and severity.">
+  <meta name="keywords" content="CVE, security, vulnerabilities, report, vendor, severity">
+  <meta name="robots" content="index, follow">
+  <title>Open CVE Report</title>
+
+  <!-- Preload critical CSS files -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" as="style">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="home.html">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Open CVE Report Logo" height="100" loading="lazy">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html">
+                <i class="fas fa-home"></i> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">
+                <i class="fas fa-info-circle"></i> About
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">
+                <i class="fas fa-envelope"></i> Contact
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.analytics') }}">
+                <i class="fas fa-chart-line"></i> Analytics
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="container mt-4 mb-5">
+      <h1 class="text-center mb-4 text-uppercase fw-bold">
+        <i class="fas fa-exclamation-triangle text-warning me-2"></i> CVE Warnings
+      </h1>
+
+      <!-- Loading Spinner -->
+      <div id="loading" class="spinner" style="display: none;" aria-live="polite" aria-label="Loading"></div>
+
+      <!-- Filter Form Section -->
+      <section class="filter-section">
+        <form class="filter-container mb-4 p-3 bg-light rounded shadow-sm" role="form">
+          <div class="row g-3">
+            <div class="col-md-3">
+              <label for="year" class="form-label">
+                <i class="fas fa-calendar-alt"></i> Year
+              </label>
+              <select id="year" class="form-select" aria-label="Selecionar Ano">
+                <option value="">Selecione</option>
+                <option value="2025" {% if request.args.get('year') == '2025' %}selected{% endif %}>2025</option>
+                <option value="2024" {% if request.args.get('year') == '2024' %}selected{% endif %}>2024</option>
+                <option value="2023" {% if request.args.get('year') == '2023' %}selected{% endif %}>2023</option>
+                <option value="2022" {% if request.args.get('year') == '2022' %}selected{% endif %}>2022</option>
+                <option value="2021" {% if request.args.get('year') == '2021' %}selected{% endif %}>2021</option>
+                <option value="2020" {% if request.args.get('year') == '2020' %}selected{% endif %}>2020</option>
+                <option value="2019" {% if request.args.get('year') == '2019' %}selected{% endif %}>2019</option>
+                <option value="2018" {% if request.args.get('year') == '2018' %}selected{% endif %}>2018</option>
+                <option value="2017" {% if request.args.get('year') == '2017' %}selected{% endif %}>2017</option>
+                <option value="2016" {% if request.args.get('year') == '2016' %}selected{% endif %}>2016</option>
+                <option value="2015" {% if request.args.get('year') == '2015' %}selected{% endif %}>2015</option>
+                <option value="2014" {% if request.args.get('year') == '2014' %}selected{% endif %}>2014</option>
+                <option value="2013" {% if request.args.get('year') == '2013' %}selected{% endif %}>2013</option>
+                <option value="2012" {% if request.args.get('year') == '2012' %}selected{% endif %}>2012</option>
+                <option value="2011" {% if request.args.get('year') == '2011' %}selected{% endif %}>2011</option>
+                <option value="2010" {% if request.args.get('year') == '2010' %}selected{% endif %}>2010</option>
+                <option value="2009" {% if request.args.get('year') == '2009' %}selected{% endif %}>2009</option>
+                <option value="2008" {% if request.args.get('year') == '2008' %}selected{% endif %}>2008</option>
+                <option value="2007" {% if request.args.get('year') == '2007' %}selected{% endif %}>2007</option>
+                <option value="2006" {% if request.args.get('year') == '2006' %}selected{% endif %}>2006</option>
+                <option value="2005" {% if request.args.get('year') == '2005' %}selected{% endif %}>2005</option>
+                <option value="2004" {% if request.args.get('year') == '2004' %}selected{% endif %}>2004</option>
+                <option value="2003" {% if request.args.get('year') == '2003' %}selected{% endif %}>2003</option>
+                <option value="2002" {% if request.args.get('year') == '2002' %}selected{% endif %}>2002</option>
+                <option value="2001" {% if request.args.get('year') == '2001' %}selected{% endif %}>2001</option>
+                <option value="2000" {% if request.args.get('year') == '2000' %}selected{% endif %}>2000</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="vendor" class="form-label">
+                <i class="fas fa-industry"></i> Vendor
+              </label>
+              <select id="vendor" class="form-select" aria-label="Select Vendor">
+                <option value="">All</option>
+                {% for v in vendors %}
+                  <option value="{{ v }}" {% if v == request.args.get('vendor') %}selected{% endif %}>{{ v }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="severity" class="form-label">
+                <i class="fas fa-exclamation-circle"></i> Severity
+              </label>
+              <select id="severity" class="form-select" aria-label="Select Severity">
+                <option value="">All</option>
+                {% for s in severities %}
+                  <option value="{{ s }}" {% if s == request.args.get('severity') %}selected{% endif %}>{{ s }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+              <button id="clearFiltersBtn" class="btn btn-secondary me-2" aria-label="Clear Filters">
+                <i class="fas fa-times"></i> Clear Filters
+              </button>
+              <button id="generateReportBtn" class="btn btn-primary" disabled aria-label="Download CSV">
+                <i class="fas fa-file-alt"></i> Download CSV
+              </button>
+              <a href="{{ url_for('main.analytics') }}" class="btn btn-info ms-2" role="button" aria-label="View Analytics">
+                <i class="fas fa-chart-line"></i> Analytics
+              </a>
+            </div>
+          </div>
+        </form>
+      </section>
+    
+{# Macro para processar e renderizar o link de referência #}
+{% macro render_reference_link(ref_links, cve_id) %}
+  {% if ref_links %}
+    {# Divide a string por vírgula e remove espaços em branco #}
+    {% set links = ref_links.split(',') %}
+    {% set first_link = links[0] | trim %}
+    {# Se o link não começar com "http", adiciona o prefixo #}
+    {% if first_link and not first_link.startswith('http') %}
+      {% set first_link = 'http://' ~ first_link %}
+    {% endif %}
+    <p>Link processado: {{ first_link }}</p>
+    <a href="{{ first_link }}" target="_blank" rel="noopener noreferrer">
+      {{ cve_id }}
+    </a>
+  {% else %}
+    {{ cve_id }}
+  {% endif %}
+{% endmacro %}
+
+
+<!-- Vulnerabilities Table -->
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>CVE ID</th>
+        <th>Descrição</th>
+        <th class="text-center">Data de Publicação</th>
+        <th class="text-center">Severidade</th>
+        <th class="text-center">Fornecedor</th>
+        <th class="text-center">CVSS Score</th>
+        <th class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody id="vulnTableBody">
+      {% for vuln in vulnerabilities %}
+      <tr>
+        <td>
+          {{ render_reference_link(vuln['reference_links'], vuln['CVE ID']) }}
+        </td>
+        <td>{{ vuln['description'] }}</td>
+        <td class="text-center">{{ vuln['published_date'] }}</td>
+        <td class="text-center">{{ vuln['baseSeverity'] }}</td>
+        <td class="text-center">{{ vuln['vendor'] }}</td>
+        <td class="text-center">{{ vuln['cvssScore'] }}</td>
+        <td class="text-center">
+          <!-- Placeholder for future actions -->
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+      <nav aria-label="Page navigation" class="mb-4">
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+      </nav>
+    </section>
+    
+    
+
+      <!-- Embedded JSON Data for JavaScript -->
+      <script id="vulnData" type="application/json">
+        {{ vulnerabilities | tojson | safe }}
+      </script>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <p>
+        &copy; 2025 Open CVE Report. All rights reserved.
+        <a href="contact.html" class="text-white" aria-label="Contact">
+          <i class="fas fa-headset"></i> Contact
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Defer scripts to avoid render-blocking -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
